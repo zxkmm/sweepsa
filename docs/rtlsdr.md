@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> The rtlsdr support is not included in the release binary, due to liortlsdr's license. Compile sweepui from this codebase if you want to use SweepSA with rtlsdr.
+
 # The RTL-SDR source
 
 `sweepui --rtl` sweeps an RTL-SDR dongle on the host's own USB, and
