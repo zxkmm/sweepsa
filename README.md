@@ -103,3 +103,6 @@ ctest --test-dir build        # host tests, no radio needed
 
 Optional: libhackrf headers for `--hackrf`, librtlsdr for `--rtl`. Both are
 detected at configure time; without them `sweepui` still builds.
+
+## Credit and Disclaimer 
+- The fastlock of 9361 idea is from [SDR-X blogpost](https://sdr-x.github.io/starlink-ul-dl-pair-80k-hop-ad9361/)
