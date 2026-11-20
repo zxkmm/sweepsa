@@ -2,6 +2,12 @@
 
 # sweepsa
 
+<img src="docs/images/screenshot-fullspan.png" alt="sweepsa 全频段扫频" width="800">
+
+<img src="docs/images/screenshot-zoom.jpg" alt="sweepsa 带标记和瀑布图的放大视图" width="800">
+
+[视频演示](https://www.youtube.com/watch?v=LSbwSFtaknI)
+
 > 原 `sweepsa-releases` 仓库，旧链接会自动跳转到这里。
 
 一款适用于软件定义无线电的扫频频谱分析仪。在运行 Pluto 风格固件并搭载 Zynq ARM 的 **AD936x 开发板**上，它通过板载 ARM 调用芯片的 **fastlock** 配置文件来切换本振频率。桌面端提供仪器风格的前面板，包括迹线、标记、检波器、推导 RBW、保持模式、瀑布图，以及带视频触发的零扫宽模式。也可以通过电脑 USB 接口使用 **HackRF One**，并利用其固件扫频模式。
@@ -71,3 +77,9 @@ ctest --test-dir build        # 主机测试，无需无线电设备
 ```
 
 可选：安装 libhackrf 头文件以启用 `--hackrf`，安装 librtlsdr 以启用 `--rtl`。两者在配置时自动检测；缺少时 `sweepui` 仍可正常编译。
+
+## 致谢与免责声明
+
+- 9361 fastlock 的思路受 [SDR-X 博客文章](https://sdr-x.github.io/starlink-ul-dl-pair-80k-hop-ad9361/)启发。
+- 本仓库包含由 AI 生成的代码。
+- 增益表的思路受 [SATSAGEN](https://www.albfer.com/en/satsagen-download-page/) 启发，但本项目没有分发或使用 SATSAGEN 的任何作品或代码。

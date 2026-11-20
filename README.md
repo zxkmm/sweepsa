@@ -2,9 +2,9 @@
 
 # sweepsa
 
-![sweepsa full span sweep](docs/images/screenshot-fullspan.png)
+<img src="docs/images/screenshot-fullspan.png" alt="sweepsa full span sweep" width="800">
 
-![sweepsa zoomed view with markers and waterfall](docs/images/screenshot-zoom.jpg)
+<img src="docs/images/screenshot-zoom.jpg" alt="sweepsa zoomed view with markers and waterfall" width="800">
 
 [Video Demo](https://www.youtube.com/watch?v=LSbwSFtaknI)
 
