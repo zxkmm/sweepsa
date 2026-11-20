@@ -1,6 +1,8 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-# sweepsa — free binaries
+# sweepsa
+
+> Formerly `sweepsa-releases`. Old links redirect here.
 
 A swept spectrum analyzer for software-defined radios. On **AD936x boards
 running Pluto-style firmware** with a Zynq ARM, it hops the LO with the chip's
@@ -9,8 +11,9 @@ instrument-style front panel: traces, markers, detectors, derived RBW, hold
 modes, a waterfall, and zero span with a video trigger. A **HackRF One** on
 your computer's USB works too, using its firmware sweep mode.
 
-This repository only hosts the **binary releases**. Download one from
-[Releases](../../releases).
+This repository holds the source of the desktop front panel (`sweepui`), the
+libraries it shares with the board-side daemon, and the **binary releases**.
+Download one from [Releases](../../releases).
 
 | archive | contents |
 |---|---|
@@ -55,15 +58,42 @@ until you load an amplitude correction.
 
 ## Licence
 
-Free to use and to redistribute unmodified. See [LICENSE.txt](LICENSE.txt).
-`sweepd` is statically linked against libiio and glibc (LGPL-2.1). The
-`sweepd-relink-kit` archive in every release holds the object files, the libiio
-source and a script to relink against modified versions of those libraries.
-The macOS and Windows builds ship libhackrf (BSD-3-Clause) and libusb
-(LGPL-2.1) as separate libraries that `sweepui` loads at run time. Replace them
-freely; libusb's source is attached to every release.
+The source in this repository is dual-licensed: **AGPL-3.0**
+([LICENSE](LICENSE)), or a **paid commercial licence** if you don't want to
+release your own source under the AGPL. Details in [LICENSING.md](LICENSING.md).
+
+The binary releases also contain `sweepd`, which is closed source; see
+[LICENSE.txt](LICENSE.txt). `sweepd` is statically linked against libiio and
+glibc (LGPL-2.1). The `sweepd-relink-kit` archive in every release holds the
+object files, the libiio source and a script to relink against modified
+versions of those libraries. The macOS and Windows builds ship libhackrf
+(BSD-3-Clause) and libusb (LGPL-2.1) as separate libraries that `sweepui`
+loads at run time. Replace them freely; libusb's source is attached to every
+release.
 
 ## Source code
 
-sweepsa is free, closed-source software for now. I plan to publish the source
-later.
+This repository has the source of:
+
+- `sweepui`, the desktop front panel (Dear ImGui + ImPlot, Linux / macOS / Windows)
+- `sweep_client`, `hackrf_probe` and `rtl_probe`, headless tools
+- the libraries `sweepui` shares with the daemon, kept under `src/sweepd/`:
+  DSP (windows, FFT, detectors), segment plan and stitching, the wire protocol,
+  IQ, signal generator and gain-table parsing
+
+`sweepd`, the board-side sweep daemon, is still closed source. Prebuilt
+binaries are attached to every release.
+
+### Build
+
+```sh
+git clone --recursive https://github.com/zxkmm/sweepsa.git
+cd sweepsa
+cmake -S . -B build -G Ninja
+cmake --build build
+ctest --test-dir build        # host tests, no radio needed
+./build/sweepui               # synthetic source
+```
+
+Optional: libhackrf headers for `--hackrf`, librtlsdr for `--rtl`. Both are
+detected at configure time; without them `sweepui` still builds.

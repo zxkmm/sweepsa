@@ -1,0 +1,23 @@
+# Build trees. build/libiio-install/ is a cross-built artifact, not a source.
+/build/
+
+# Editor and tooling droppings
+*.swp
+.cache/
+compile_commands.json
+
+# Outputs the tools write by default
+*.csv
+*.png
+__pycache__/
+
+# Repo-local ARM toolchain (./sbt toolchain)
+/armbin/
+
+# ./sbt dist output
+/dist/
+.DS_Store
+
+# SATSAGEN's gain table: its licence forbids redistribution of any part of the
+# software, so it stays a local file. See gaintables/README.md.
+/gaintables/satsagen_*

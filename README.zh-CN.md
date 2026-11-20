@@ -1,10 +1,12 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-# sweepsa — 免费二进制版本
+# sweepsa
+
+> 原 `sweepsa-releases` 仓库，旧链接会自动跳转到这里。
 
 一款适用于软件定义无线电的扫频频谱分析仪。在运行 Pluto 风格固件并搭载 Zynq ARM 的 **AD936x 开发板**上，它通过板载 ARM 调用芯片的 **fastlock** 配置文件来切换本振频率。桌面端提供仪器风格的前面板，包括迹线、标记、检波器、推导 RBW、保持模式、瀑布图，以及带视频触发的零扫宽模式。也可以通过电脑 USB 接口使用 **HackRF One**，并利用其固件扫频模式。
 
-此仓库仅提供**二进制发布版本**。请从 [Releases](../../releases) 下载。
+此仓库包含桌面前面板（`sweepui`）及其与板端守护进程共用的库的源代码，以及**二进制发布版本**。请从 [Releases](../../releases) 下载。
 
 | 压缩包 | 内容 |
 |---|---|
@@ -43,9 +45,29 @@ pip3 install --user pyserial && ./launch.py   # 通过 USB 连接开发板：部
 
 ## 许可证
 
-可免费使用并重新分发未经修改的版本。详见 [LICENSE.txt](LICENSE.txt)。
-`sweepd` 与 libiio 和 glibc 静态链接（LGPL-2.1）。每个发布版本中的 `sweepd-relink-kit` 压缩包都包含目标文件、libiio 源代码，以及一个用于重新链接到修改版库的脚本。macOS 和 Windows 版本将 libhackrf（BSD-3-Clause）和 libusb（LGPL-2.1）作为独立库随附，由 `sweepui` 在运行时加载。你可以自由替换这些库；每个发布版本都附有 libusb 的源代码。
+本仓库源代码采用双重许可：**AGPL-3.0**（[LICENSE](LICENSE)），或者，如果你不想按 AGPL 公开自己的源代码，可购买**付费商业许可**。详见 [LICENSING.md](LICENSING.md)。
+
+二进制发布版本还包含闭源的 `sweepd`，见 [LICENSE.txt](LICENSE.txt)。`sweepd` 与 libiio 和 glibc 静态链接（LGPL-2.1）。每个发布版本中的 `sweepd-relink-kit` 压缩包都包含目标文件、libiio 源代码，以及一个用于重新链接到修改版库的脚本。macOS 和 Windows 版本将 libhackrf（BSD-3-Clause）和 libusb（LGPL-2.1）作为独立库随附，由 `sweepui` 在运行时加载。你可以自由替换这些库；每个发布版本都附有 libusb 的源代码。
 
 ## 源代码
 
-sweepsa 目前是免费的闭源软件，我计划在之后公开源代码。
+本仓库包含以下源代码：
+
+- `sweepui`：桌面前面板（Dear ImGui + ImPlot，支持 Linux / macOS / Windows）
+- `sweep_client`、`hackrf_probe`、`rtl_probe`：无界面工具
+- `sweepui` 与守护进程共用的库，位于 `src/sweepd/`：DSP（窗函数、FFT、检波器）、分段规划与拼接、线路协议、IQ、信号发生器和增益表解析
+
+板端扫频守护进程 `sweepd` 仍为闭源，每个发布版本都附带预编译二进制。
+
+### 编译
+
+```sh
+git clone --recursive https://github.com/zxkmm/sweepsa.git
+cd sweepsa
+cmake -S . -B build -G Ninja
+cmake --build build
+ctest --test-dir build        # 主机测试，无需无线电设备
+./build/sweepui               # 合成信号源
+```
+
+可选：安装 libhackrf 头文件以启用 `--hackrf`，安装 librtlsdr 以启用 `--rtl`。两者在配置时自动检测；缺少时 `sweepui` 仍可正常编译。
