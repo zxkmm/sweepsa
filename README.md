@@ -6,7 +6,7 @@
 
 ![sweepsa zoomed view with markers and waterfall](docs/images/screenshot-zoom.jpg)
 
-[![sweepsa demo video](https://img.youtube.com/vi/LSbwSFtaknI/hqdefault.jpg)](https://www.youtube.com/watch?v=LSbwSFtaknI)
+[Video Demo](https://www.youtube.com/watch?v=LSbwSFtaknI)
 
 > Formerly `sweepsa-releases`. Old links redirect here.
 
