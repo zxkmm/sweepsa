@@ -82,4 +82,4 @@ ctest --test-dir build        # 主机测试，无需无线电设备
 
 - 9361 fastlock 的思路受 [SDR-X 博客文章](https://sdr-x.github.io/starlink-ul-dl-pair-80k-hop-ad9361/)启发。
 - 本仓库包含由 AI 生成的代码。
-- 增益表的思路受 [SATSAGEN](https://www.albfer.com/en/satsagen-download-page/) 启发，但本项目不分发或包含 SATSAGEN 的任何作品或代码。
+- 增益表的思路受 [SATSAGEN](https://www.albfer.com/en/satsagen-download-page/) 启发，但本项目没有分发或使用 SATSAGEN 的任何作品或代码。
