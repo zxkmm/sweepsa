@@ -19,11 +19,8 @@ crosses without the driver re-selecting anything.
 | `e310_tezuka_stock.txt` | The driver's own three-band table (0–1.3, 1.3–4, 4–6 GHz), read off the E310 under Tezuka v0.3.24 on 2026-10-21. What `stock` puts back. | yes |
 | `satsagen_ad9361_cgt.txt` | SATSAGEN 0.9.5.1's `ad9361_CGT`: one band, 0–6 GHz, 0–79 dB. | **no** |
 
-The SATSAGEN file is not in the repository. SATSAGEN's licence forbids
-redistributing or deriving from any part of it, so the copy here stays local
-(`.gitignore`). To recreate it, unpack `satsagen_<ver>_setup.exe` with 7-Zip
-(InstallShield → MSI → `Data1.cab`) and copy `ad9361_CGT1` here under that
-name.
+This tool supports SATSAGEN's paintable too, but is not in the repository. SATSAGEN's licence forbids
+redistributing or deriving from any part of it. To get it yourself, unpack `satsagen_<ver>_setup.exe` with 7-Zip (InstallShield → MSI → `Data1.cab`) and copy `ad9361_CGT1` here under that name. Follow their own license when you using their work.
 
 The driver refuses writes over 4096 bytes. `sweepd` compacts a larger table
 (spaces after commas, `0x00` → `0`) without changing a value and refuses one
