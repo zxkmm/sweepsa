@@ -2,6 +2,12 @@
 
 # sweepsa
 
+![sweepsa full span sweep](docs/images/screenshot-fullspan.png)
+
+![sweepsa zoomed view with markers and waterfall](docs/images/screenshot-zoom.jpg)
+
+[![sweepsa demo video](https://img.youtube.com/vi/LSbwSFtaknI/hqdefault.jpg)](https://www.youtube.com/watch?v=LSbwSFtaknI)
+
 > Formerly `sweepsa-releases`. Old links redirect here.
 
 A swept spectrum analyzer for software-defined radios. On **AD936x boards

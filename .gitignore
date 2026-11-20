@@ -9,6 +9,7 @@ compile_commands.json
 # Outputs the tools write by default
 *.csv
 *.png
+!docs/images/*.png
 __pycache__/
 
 # Repo-local ARM toolchain (./sbt toolchain)
